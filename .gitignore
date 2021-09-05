@@ -1,0 +1,22 @@
+# ignore all files
+*
+
+# unignore all dirs
+!*/
+
+# unignore C and C++ source files
+!*.h
+!*.c
+!*.cpp
+
+# unignore makefiles
+!makefile
+
+# unignore vim subwindow setup files
+!vs
+
+# unignore text files
+!*.txt
+
+# unignore .gitignore
+!.gitignore

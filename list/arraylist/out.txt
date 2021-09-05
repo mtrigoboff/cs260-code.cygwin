@@ -1,0 +1,40 @@
+list: implemented as array
+
+List: ( 5 elements) [b, c, d, e, f]
+
+added G as new last item
+List: ( 6 elements) [b, c, d, e, f, G]
+
+added A before b
+List: ( 7 elements) [A, b, c, d, e, f, G]
+
+added C before c
+List: ( 8 elements) [A, b, C, c, d, e, f, G]
+
+didn't add X before x
+List: ( 8 elements) [A, b, C, c, d, e, f, G]
+
+found f
+removed f
+List: ( 7 elements) [A, b, C, c, d, e, G]
+
+found A
+removed A
+List: ( 6 elements) [b, C, c, d, e, G]
+
+found G
+removed G
+List: ( 5 elements) [b, C, c, d, e]
+
+didn't find x
+didn't remove x
+
+changing item [1] to 'X'
+List: ( 5 elements) [b, X, c, d, e]
+
+retrieving item [1]
+   value is: X
+
+retrieving item [1000]
+   const error exception: index out of bounds
+
