@@ -18,7 +18,7 @@
 # unignore text files
 !*.txt
 
-# unignore markdown files
+# unignore Markdown files
 !*.md
 
 # unignore .gitignore
