@@ -21,11 +21,11 @@ Patient::~Patient(void)
 	
 ostream& operator<<(ostream& out, Patient& patient)
 {
-	out << "Patient("
-		<< patient.name << ", "
-		<< patient.temperature << ", "
-		<< patient.age
-		<< ")" << endl;
+	out << "Patient["
+		<< "name=" << patient.name			<< ", "
+		<< "temp=" << patient.temperature	<< ", "
+		<< "age="  << patient.age			<< "]"
+		<< endl;
 
 	return out;
 }

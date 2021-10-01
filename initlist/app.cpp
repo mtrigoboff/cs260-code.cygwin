@@ -10,13 +10,19 @@ int main(int argc, char **argv)
 	if (argc > 1)				// turn off cout
 		std::cout.setstate(std::ios_base::badbit);
 
-	cout << "--- temperatures ---" << endl << endl;
+	cout << "--- temperature instances ---" << endl << endl;
 
-	Temperature		freeze{32.0};
+	cout << "abs zero: ";
 	Temperature		absoluteZero{-459.67};
+	cout << absoluteZero << endl << endl;
 
+	cout << "freeze:   ";
+	Temperature		freeze{32.0};
+	cout << freeze << endl << endl;
+
+	// can call static member function without using an instance
 	double boil{Temperature::celsiusToFahrenheit(100.0)};
-	cout << "boil: " << boil << endl;
+	cout << "boil:     " << boil << Temperature::degreeChar << " F" << endl;
 
 	cout << endl;
 

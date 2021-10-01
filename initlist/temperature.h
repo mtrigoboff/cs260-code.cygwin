@@ -16,11 +16,11 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& out, Temperature& temperature);
 
+	static const unsigned char		degreeChar{0xB0};
+
 private:
 	double	fahrenheit;
 	double	celsius;
-
-	static const unsigned char		degreeChar{0xB0};
 };
 
 #endif // _TEMPERATURE_H_

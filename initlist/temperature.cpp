@@ -8,7 +8,10 @@ Temperature::Temperature(double fahrenheit) :
 	fahrenheit{fahrenheit},
 	celsius{fahrenheitToCelsius(fahrenheit)}
 {
-	cout << "Temperature ctor(" << *this << ")" << endl;
+	cout << "Temperature constructor("
+		 << fixed << setprecision(1)
+		 << fahrenheit << degreeChar << " F"
+		 << ")" << endl;
 }
 
 Temperature::Temperature(void) :
@@ -16,14 +19,17 @@ Temperature::Temperature(void) :
 	fahrenheit{-1000.0},
 	celsius{-1000.0}
 {
-	cout << "Temperature default ctor(" << *this << ")" << endl;
+	cout << "Temperature default constructor" << endl;
 }
 
 void Temperature::set(double fahrenheit)
 {
 	this->fahrenheit = fahrenheit;
 	celsius = fahrenheitToCelsius(fahrenheit);
-	cout << "Temperature::set(" << *this << ")" << endl;
+	cout << "Temperature::set("
+		 << fixed << setprecision(1) << fahrenheit
+		 << Temperature::degreeChar << " F"
+		 << ")" << endl;
 }
 
 double Temperature::celsiusToFahrenheit(double celsius)
@@ -38,9 +44,14 @@ double Temperature::fahrenheitToCelsius(double fahrenheit)
 
 ostream& operator<<(ostream& out, Temperature& temperature)
 {
-	out << fixed << setprecision(2) << "["
-		<< temperature.fahrenheit << Temperature::degreeChar << ", "
-		<< temperature.celsius << Temperature::degreeChar << "]";
+	out << "Temperature[";
+	if (temperature.fahrenheit == -1000.0 && temperature.celsius == -1000.0)
+		out << "--default--";
+	else
+		out << fixed << setprecision(1)
+			<< temperature.fahrenheit << Temperature::degreeChar << " F, "
+			<< temperature.celsius << Temperature::degreeChar << " C";
+	out << "]";
 
 	return out;
 }
