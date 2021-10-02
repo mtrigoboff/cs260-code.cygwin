@@ -22,8 +22,11 @@ int main(int argc, char** argv)
 
 	// shallow copy
 	if (argc > 1) {
-		StringShallow	str1{"abc"};
-		StringShallow	str2{str1};
+		StringShallow	strSh1{"xyz"};
+		StringShallow	strSh2{strSh1};
+		StringShallow	strSh3;
+
+		strSh3 = strSh2;
 		}
 
 	return 0;
