@@ -22,7 +22,6 @@ ostream& operator<<(ostream& out, Array& ar)
 {
 	for (int i = 0; i < ar.size; i++)
 		out << ar.items[i];
-	out << endl;
 
 	return out;
 }
