@@ -1,5 +1,5 @@
-#ifndef _ARRAY_
-#define _ARRAY_
+#ifndef _ARRAY_H_
+#define _ARRAY_H_
 
 #include <iostream>
 
@@ -29,4 +29,4 @@ private:
 	friend std::ostream& operator<<(std::ostream& out, Element& el);
 };
 
-#endif //  _ARRAY_
+#endif //  _ARRAY_H_
