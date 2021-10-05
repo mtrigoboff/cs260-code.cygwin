@@ -5,7 +5,10 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-	if (strcmp(argv[0], "pa") != 0) {			// argv[0] not equal to "pa"
+	if (strchr(argv[0], '/'))			// running in gdb, so turn off cout
+		std::cout.setstate(std::ios_base::badbit);
+
+	if (! strstr(argv[0], "pa")) {		// argv[0] does not contain "pa"
 		
 		// detailed output
 
@@ -14,7 +17,7 @@ int main(int argc, char** argv)
 			cout << i << ": \"" << argv[i] << "\"" << endl;
 		}
 
-	else {										// argv[0] equal to "pa"
+	else {								// argv[0] equal to "pa"
 		
 		// short output
 		
