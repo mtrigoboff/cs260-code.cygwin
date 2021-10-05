@@ -4,6 +4,7 @@
 include ~michael.trigoboff/bin/makeflags_g++
 
 pa:				printargs
+				rm -f pa
 				ln printargs pa
 
 printargs:
