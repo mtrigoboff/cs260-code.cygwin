@@ -1,0 +1,16 @@
+CS260 - Assignment 0
+
+adding x
+adding y
+adding z
+list contents: [zyx]
+found y
+deleting y
+list contents: [zx]
+did not find y
+deleting x
+list contents: [z]
+did not find y
+deleting z
+list contents: []
+did not find y
