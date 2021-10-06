@@ -26,9 +26,11 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +11 app.cpp
+badd +16 app.cpp
 badd +1 enum_class.cpp
-badd +0 enum_class.h
+badd +1 enum_class.h
+badd +0 car.h
+badd +0 car.cpp
 argglobal
 silent! argdel *
 $argadd app.cpp
@@ -178,7 +180,7 @@ normal! zt
 normal! 0
 wincmd w
 argglobal
-if bufexists('enum_class.h') | buffer enum_class.h | else | edit enum_class.h | endif
+if bufexists('car.h') | buffer car.h | else | edit car.h | endif
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -297,17 +299,15 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-8
-normal! zo
-let s:l = 10 - ((9 * winheight(0) + 14) / 28)
+let s:l = 16 - ((13 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-10
-normal! 016|
+16
+normal! 09|
 wincmd w
 argglobal
-if bufexists('enum_class.cpp') | buffer enum_class.cpp | else | edit enum_class.cpp | endif
+if bufexists('car.cpp') | buffer car.cpp | else | edit car.cpp | endif
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -426,12 +426,12 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 29) / 58)
+let s:l = 17 - ((16 * winheight(0) + 29) / 58)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+17
+normal! 013|
 wincmd w
 exe '1resize ' . ((&lines * 29 + 30) / 60)
 exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)

@@ -17,17 +17,18 @@ public:
 		N_ENGINETYPES
 	};
 
-	Car(Brand brand, EngineType engineType, int price);
+	Car(Brand brand, EngineType engineType, int cylinders, int price);
 
+	friend std::ostream& operator<<(std::ostream& out, Car& car);
 	friend std::ostream& operator<<(std::ostream& out, Brand brand);
 	friend std::ostream& operator<<(std::ostream& out, EngineType engineType);
-	friend std::ostream& operator<<(std::ostream& out, Car& car);
 
 private:
 
 	Brand		brand;
 	EngineType	engineType;
 	int			cylinders;
+	int			price;
 };
 
 #endif // _CAR_H_
