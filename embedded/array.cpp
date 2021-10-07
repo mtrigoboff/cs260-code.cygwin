@@ -15,6 +15,9 @@ Array::~Array()
 
 void Array::set(int index, char ch)
 {
+	if (index < 0 || index >= size)
+		throw "Array::set: index out of bounds!";
+	
 	items[index].ch = ch;
 }
 

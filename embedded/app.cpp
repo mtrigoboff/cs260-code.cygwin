@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 	if (argc > 1)				// turn off cout
 		std::cout.setstate(std::ios_base::badbit);
 
-	Array	ar{5};
+	Array	ar{SIZE};
 
 	for (int i{0}, ch{'a'}; i < SIZE; i++, ch++)
 		ar.set(i, ch);
