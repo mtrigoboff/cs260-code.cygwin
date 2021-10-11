@@ -17,13 +17,6 @@ static bool addBefore(char before, char ch)
 	return added;
 }
 
-static void addLast(char ch)
-{
-	list.addLast(ch);
-
-	cout << "added " << ch << " as new last item" << endl;
-}
-
 static bool find(char ch)
 {
 	bool	found{list.find(ch)};
@@ -55,23 +48,24 @@ int main(int argc, char** argv)
 	if (argc > 1)				// turn off cout
 		std::cout.setstate(std::ios_base::badbit);
 
-	char	ch{'f'};
+	char	ch{'k'};
 
-	cout << "list: implemented as array" << endl << endl;
+	cout << "List: no head node" << endl << endl;
 
 	for (int i = 0; i < 5; i++)
 		list.addFirst(ch--);
 	cout << list << endl;
 
-	addLast('G');
+	for (int i = 0; i < 5; i++)
+		list.addFirst(ch--);
 	cout << list << endl;
-
+	
 	addBefore('b', 'A');
 	cout << list << endl;
 
-	addBefore('c', 'C');
+	addBefore('k', 'Z');
 	cout << list << endl;
-
+	
 	addBefore('x', 'X');
 	cout << list << endl;
 
@@ -83,42 +77,14 @@ int main(int argc, char** argv)
 	remove('A');
 	cout << list << endl;
 
-	find('G');
-	remove('G');
+	find('k');
+	remove('k');
 	cout << list << endl;
 
 	find('x');
 	remove('x');
+
 	cout << endl;
 
-	cout << "changing item [1] to 'X'" << endl;
-	list[1] = 'X';
-	cout << list << endl;
-
-	cout << "retrieving item [1]" << endl;
-	ch = list[1];
-	cout << "   value is: " << ch << endl << endl;
-
-	// for convenient gdb demo
-	list[2] = 'Y';
-	ch = list[2];
-
-	// illegal index
-	try {
-		cout << "retrieving item [1000]" << endl;
-		ch = list[1000];
-		cout << "   value is: " << ch << endl << endl;
-		}
-	catch (char const * err) {
-		cout << "   const error exception: " << err << endl;
-		}
-	catch (char* err) {
-		cout << "   error exception: " << err << endl;
-		}
-	catch (...) {
-		cout << "ellipsis!" << endl;
-		}
-	cout << endl;
-	
 	return 0;
 }

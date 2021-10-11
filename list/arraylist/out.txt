@@ -1,40 +1,30 @@
-list: implemented as array
+List: no head node
 
-List: ( 5 elements) [b, c, d, e, f]
+List: ( 5 elements) [g, h, i, j, k]
 
-added G as new last item
-List: ( 6 elements) [b, c, d, e, f, G]
+List: (10 elements) [b, c, d, e, f, g, h, i, j, k]
 
 added A before b
-List: ( 7 elements) [A, b, c, d, e, f, G]
+List: (11 elements) [A, b, c, d, e, f, g, h, i, j, k]
 
-added C before c
-List: ( 8 elements) [A, b, C, c, d, e, f, G]
+added Z before k
+List: (12 elements) [A, b, c, d, e, f, g, h, i, j, Z, k]
 
 didn't add X before x
-List: ( 8 elements) [A, b, C, c, d, e, f, G]
+List: (12 elements) [A, b, c, d, e, f, g, h, i, j, Z, k]
 
 found f
 removed f
-List: ( 7 elements) [A, b, C, c, d, e, G]
+List: (11 elements) [A, b, c, d, e, g, h, i, j, Z, k]
 
 found A
 removed A
-List: ( 6 elements) [b, C, c, d, e, G]
+List: (10 elements) [b, c, d, e, g, h, i, j, Z, k]
 
-found G
-removed G
-List: ( 5 elements) [b, C, c, d, e]
+found k
+removed k
+List: ( 9 elements) [b, c, d, e, g, h, i, j, Z]
 
 didn't find x
 didn't remove x
-
-changing item [1] to 'X'
-List: ( 5 elements) [b, X, c, d, e]
-
-retrieving item [1]
-   value is: X
-
-retrieving item [1000]
-   const error exception: index out of bounds
 
