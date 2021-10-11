@@ -17,9 +17,8 @@ public:
 	friend std::ostream& operator<<(std::ostream& out, const List& list);
 
 private:
-	class Node
+	struct Node
 	{
-	public:
 		Node(char ch, Node* next) : ch{ch}, next{next} { }
 
 		char	ch;
