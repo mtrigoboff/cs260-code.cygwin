@@ -25,7 +25,7 @@ private:
 
 	char*	listArray;
 	int		arraySize;
-	int		nextIndex;
+	int		nItems;
 };
 
 
