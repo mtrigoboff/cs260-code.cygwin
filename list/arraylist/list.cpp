@@ -115,10 +115,11 @@ char& List::operator[](int index)
 
 ostream& operator<<(ostream& out, const List& list)
 {
-	bool first{true};
+	bool	first{true};
+	int		listLgth{list.length()};
 
-	out << "List: (" << setw(2) << list.length() << " elements) [";
-	for (int i{0}; i < list.nItems; i++) {
+	out << "List: (" << setw(2) << listLgth << " elements) [";
+	for (int i{0}; i < listLgth; i++) {
 		if (first)
 			first = false;
 		else
