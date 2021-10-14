@@ -10,14 +10,7 @@ List::List(void) :
 
 List::~List(void)
 {
-	Node*	node{first};
-	Node*	nextNode;
-
-	while (node) {
-		nextNode = node->next;
-		delete node;
-		node = nextNode;
-		}
+	empty();
 }
 
 void List::addFirst(char ch)
@@ -62,6 +55,18 @@ bool List::addBefore(char before, char ch)
 		return false;
 }
 
+void List::addLast(char ch)
+{
+	Node*	node{first};
+	Node*	lastNode{nullptr};
+
+	while (node) {
+		lastNode = node;
+		node = node->next;
+		}
+	lastNode->next = new Node(ch, nullptr);
+}
+
 bool List::find(char ch) const
 {
 	Node*	node;
@@ -90,6 +95,19 @@ bool List::remove(char ch)
 		return false;
 }
 
+void List::empty()
+{
+	Node*	node{first};
+	Node*	nextNode;
+
+	while (node) {
+		nextNode = node->next;
+		delete node;
+		node = nextNode;
+		}
+	first = nullptr;
+}
+
 int List::length(void) const
 {
 	Node*	node{first};
@@ -100,6 +118,22 @@ int List::length(void) const
 		node = node->next;
 		}
 	return lgth;
+}
+
+char& List::operator[](int index)
+{
+	static char*	outOfRangeMsg{"index out of range"};
+
+	Node*	node{first};
+
+	if (index < 0)
+		throw outOfRangeMsg;
+	for (int i = 0; i < index; i++) {
+		if (node == nullptr)
+			throw outOfRangeMsg;
+		node = node->next;
+		}
+	return node->ch;
 }
 
 ostream& operator<<(ostream& out, const List& list)
