@@ -13,6 +13,7 @@ public:
 	void addLast(char ch);
 	bool find(char ch) const;
 	bool remove(char ch);
+	void empty();
 	int	length(void) const;
 
 	char& operator[](int index);

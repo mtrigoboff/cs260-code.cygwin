@@ -95,6 +95,11 @@ bool List::remove(char ch)
 		return false;
 }
 
+void List::empty()
+{
+	nItems = 0;
+}
+
 int List::length(void) const
 {
 	return nItems;

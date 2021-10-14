@@ -109,15 +109,28 @@ int main(int argc, char** argv)
 	cout << list << endl;
 
 	find('x');
-	remove('x');
 	cout << endl;
 
+	cout << "adding x at end of list" << endl;
+	list.addLast('x');
+	cout << list << endl;
+
+	find('x');
+	remove('x');
+	cout << list << endl;
+
 	cout << "-- operator[] overload --" << endl;
+	cout << list;
 	getIndex(2);
 	getIndex(-3);
 	getIndex(22);
 	setIndex(2, 'x');
-	cout << list << endl;
+	cout << list;
+	cout << "emptying list" << endl;
+	list.empty();
+	cout << list;
+	getIndex(2);
+	cout << endl;
 
 	return 0;
 }
