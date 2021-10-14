@@ -43,6 +43,30 @@ static bool remove(char ch)
 	return removed;
 }
 
+static void getIndex(int index)
+{
+	try {
+		char ch{list[index]};
+		cout << "list[" << index << "] == " << ch;
+		}
+	catch (const char* e) {
+		cout << "list[" << index << "]: " << e;
+		}
+	cout << endl;
+}
+
+static void setIndex(int index, char ch)
+{
+	try {
+		list[index] = ch;
+		cout << "list[" << index << "] = " << ch;
+		}
+	catch (const char* e) {
+		cout << "list[" << index << "]: " << e;
+		}
+	cout << endl;
+}
+
 int main(int argc, char** argv)
 {
 	if (argc > 1)				// turn off cout
@@ -51,6 +75,9 @@ int main(int argc, char** argv)
 	char	ch{'k'};
 
 	cout << "List: no head node" << endl << endl;
+
+	getIndex(2);
+	cout << endl;
 
 	for (int i = 0; i < 5; i++)
 		list.addFirst(ch--);
@@ -83,8 +110,14 @@ int main(int argc, char** argv)
 
 	find('x');
 	remove('x');
-
 	cout << endl;
+
+	cout << "-- operator[] overload --" << endl;
+	getIndex(2);
+	getIndex(-3);
+	getIndex(22);
+	setIndex(2, 'x');
+	cout << list << endl;
 
 	return 0;
 }
