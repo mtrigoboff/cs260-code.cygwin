@@ -65,26 +65,26 @@ List::~List(void)
 
 void List::addFirst(char ch)
 {
-	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
 
-	pd->expandIfNeeded();
-	for (int i{pd->nItems}; i > 0; i--)
-		pd->listArray[i] = pd->listArray[i - 1];
-	pd->listArray[0] = ch;
-	pd->nItems++;
+	id->expandIfNeeded();
+	for (int i{id->nItems}; i > 0; i--)
+		id->listArray[i] = id->listArray[i - 1];
+	id->listArray[0] = ch;
+	id->nItems++;
 }
 
 bool List::addBefore(char before, char ch)
 {
-	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
 	int				index;
 	
-	if (pd->findIndex(before, index)) {
-		pd->expandIfNeeded();
-		for (int i{pd->nItems - 1}; i >= index; i--)
-			pd->listArray[i + 1] = pd->listArray[i];
-		pd->listArray[index] = ch;
-		pd->nItems++;
+	if (id->findIndex(before, index)) {
+		id->expandIfNeeded();
+		for (int i{id->nItems - 1}; i >= index; i--)
+			id->listArray[i + 1] = id->listArray[i];
+		id->listArray[index] = ch;
+		id->nItems++;
 		return true;
 		}
 	else
@@ -93,29 +93,29 @@ bool List::addBefore(char before, char ch)
 
 void List::addLast(char ch)
 {
-	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
 
-	pd->expandIfNeeded();
-	pd->listArray[pd->nItems++] = ch;
+	id->expandIfNeeded();
+	id->listArray[id->nItems++] = ch;
 }
 
 bool List::find(char ch) const
 {
-	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
 	int				index;
 
-	return pd->findIndex(ch, index);
+	return id->findIndex(ch, index);
 }
 
 bool List::remove(char ch)
 {
-	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
 	int				index;
 
-	if (pd->findIndex(ch, index)) {
-		for (int i = index; i < pd->nItems - 1; i++)
-			pd->listArray[i] = pd->listArray[i + 1];
-		pd->nItems--;
+	if (id->findIndex(ch, index)) {
+		for (int i = index; i < id->nItems - 1; i++)
+			id->listArray[i] = id->listArray[i + 1];
+		id->nItems--;
 		return true;
 		}
 	else
@@ -124,40 +124,40 @@ bool List::remove(char ch)
 
 void List::empty()
 {
-	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
 	
-	pd->nItems = 0;
+	id->nItems = 0;
 }
 
 int List::length(void) const
 {
-	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
 
-	return pd->nItems;
+	return id->nItems;
 }
 
 char& List::operator[](int index)
 {
-	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
 
-	if (index < 0 || index >= pd->nItems)
+	if (index < 0 || index >= id->nItems)
 		throw "index out of bounds";
 
-	return pd->listArray[index];
+	return id->listArray[index];
 }
 
 ostream& operator<<(ostream& out, const List& list)
 {
-	InstanceData*	pd{static_cast<InstanceData*>(list.instanceData)};
+	InstanceData*	id{static_cast<InstanceData*>(list.instanceData)};
 	bool			first{true};
 
 	out << "List: (" << setw(2) << list.length() << " elements) [";
-	for (int i{0}; i < pd->nItems; i++) {
+	for (int i{0}; i < id->nItems; i++) {
 		if (first)
 			first = false;
 		else
 			out << ", ";
-		out << pd->listArray[i];
+		out << id->listArray[i];
 		}
 	out << "]" << endl;
 	return out;
