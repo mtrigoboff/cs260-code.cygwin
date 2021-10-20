@@ -11,36 +11,18 @@ struct Node
 	Node*	next;
 };
 
-struct PrivateData
+struct InstanceData
 {
-	PrivateData() : first{nullptr} {}
+	InstanceData() : first{nullptr} {}
+
+	bool findPrev(char ch, void*& prevNode) const;
 
 	Node*	first;
 };
 
-List::List(void) :
-	privateData{new PrivateData()}
+bool InstanceData::findPrev(char ch, void*& prevNode) const
 {
-}
-
-List::~List(void)
-{
-	empty();
-	delete static_cast<PrivateData*>(privateData);
-}
-
-void List::addFirst(char ch)
-{
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
-
-	pd->first = new Node{ch, pd->first};
-}
-
-bool List::findPrev(char ch, void*& prevNode) const
-{
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
-
-	Node*			node{pd->first};
+	Node*			node{first};
 	Node*			prev{nullptr};
 
 	while (node) {
@@ -54,20 +36,38 @@ bool List::findPrev(char ch, void*& prevNode) const
 	return false;
 }
 
+List::List(void) :
+	instanceData{new InstanceData()}
+{
+}
+
+List::~List(void)
+{
+	empty();
+	delete static_cast<InstanceData*>(instanceData);
+}
+
+void List::addFirst(char ch)
+{
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
+
+	id->first = new Node{ch, id->first};
+}
+
 bool List::addBefore(char before, char ch)
 {
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
 
 	Node*			prev;
 	Node*			node;
 	bool			foundPrev;
 
-	foundPrev = findPrev(before, reinterpret_cast<void*&>(prev));
+	foundPrev = id->findPrev(before, reinterpret_cast<void*&>(prev));
 	if (foundPrev) {
 		node = new Node(ch, nullptr);
 		if (prev == nullptr) {
-			node->next = pd->first;
-			pd->first = node;
+			node->next = id->first;
+			id->first = node;
 			}
 		else {
 			node->next = prev->next;
@@ -81,9 +81,9 @@ bool List::addBefore(char before, char ch)
 
 void List::addLast(char ch)
 {
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
 
-	Node*			node{pd->first};
+	Node*			node{id->first};
 	Node*			lastNode{nullptr};
 
 	while (node) {
@@ -95,24 +95,25 @@ void List::addLast(char ch)
 
 bool List::find(char ch) const
 {
-	void*	unused;
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
+	void*			unused;
 
-	return findPrev(ch, unused);
+	return id->findPrev(ch, unused);
 }
 
 bool List::remove(char ch)
 {
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
 
 	Node*			prev;
 	Node*			node;
 	bool			foundPrev;
 
-	foundPrev = findPrev(ch, reinterpret_cast<void*&>(prev));
+	foundPrev = id->findPrev(ch, reinterpret_cast<void*&>(prev));
 	if (foundPrev) {
 		if (prev == nullptr) {
-			node = pd->first;
-			pd->first = node->next;
+			node = id->first;
+			id->first = node->next;
 			}
 		else {
 			node = prev->next;
@@ -127,9 +128,9 @@ bool List::remove(char ch)
 
 void List::empty()
 {
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
 
-	Node*			node{pd->first};
+	Node*			node{id->first};
 	Node*			nextNode;
 
 	while (node) {
@@ -137,14 +138,14 @@ void List::empty()
 		delete node;
 		node = nextNode;
 		}
-	pd->first = nullptr;
+	id->first = nullptr;
 }
 
 int List::length(void) const
 {
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
 
-	Node*			node{pd->first};
+	Node*			node{id->first};
 	int				lgth{0};
 
 	while (node) {
@@ -156,11 +157,11 @@ int List::length(void) const
 
 char& List::operator[](int index)
 {
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
+	InstanceData*	id{static_cast<InstanceData*>(this->instanceData)};
 
 	static char*	outOfRangeMsg{"index out of range"};
 
-	Node*			node{pd->first};
+	Node*			node{id->first};
 
 	if (index < 0)
 		throw outOfRangeMsg;
@@ -174,9 +175,9 @@ char& List::operator[](int index)
 
 ostream& operator<<(ostream& out, const List& list)
 {
-	PrivateData*	pd{static_cast<PrivateData*>(list.privateData)};
+	InstanceData*	id{static_cast<InstanceData*>(list.instanceData)};
 
-	Node*			node{pd->first};
+	Node*			node{id->first};
 	bool			first{true};
 
 	out << "List: (" << setw(2) << list.length() << " elements) [";
