@@ -5,82 +5,82 @@ using namespace std;
 
 static const int	INITIAL_SIZE{4};
 
-struct PrivateData
+struct InstanceData
 {
-	PrivateData(int arraySize, int nItems) :
+	InstanceData(int arraySize, int nItems) :
 		listArray{new char[INITIAL_SIZE]},
 		arraySize{arraySize},
 		nItems{nItems}
 	{
 	}
 
-	~PrivateData()
+	~InstanceData()
 	{
 		delete[] listArray;
 	}
+
+	void expandIfNeeded();
+	bool findIndex(const char ch, int& index) const;
 
 	char*	listArray;
 	int		arraySize;
 	int		nItems;
 };
 
-List::List(void) :
-	privateData{new PrivateData{INITIAL_SIZE, 0}}
+void InstanceData::expandIfNeeded()
 {
-}
-
-List::~List(void)
-{
-	delete static_cast<PrivateData*>(privateData);
-}
-
-void List::expandIfNeeded()
-{
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
 	int				newArraySize;
 	char*			newArray;
 
-	if (pd->nItems >= pd->arraySize) {
-		newArraySize = pd->arraySize + INITIAL_SIZE;
+	if (nItems >= arraySize) {
+		newArraySize = arraySize + INITIAL_SIZE;
 		newArray = new char[newArraySize];
-		for (int i = 0; i < pd->arraySize; i++)
-			newArray[i] = pd->listArray[i];
-		delete[] pd->listArray;
-		pd->listArray = newArray;
-		pd->arraySize = newArraySize;
+		for (int i = 0; i < arraySize; i++)
+			newArray[i] = listArray[i];
+		delete[] listArray;
+		listArray = newArray;
+		arraySize = newArraySize;
 		}
 }
 
-void List::addFirst(char ch)
+bool InstanceData::findIndex(const char ch, int& index) const
 {
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
-
-	expandIfNeeded();
-	for (int i{pd->nItems}; i > 0; i--)
-		pd->listArray[i] = pd->listArray[i - 1];
-	pd->listArray[0] = ch;
-	pd->nItems++;
-}
-
-bool List::findIndex(const char ch, int& index) const
-{
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
-
-	for (int i{0}; i < pd->nItems; i++)
-		if (pd->listArray[i] == ch) {
+	for (int i{0}; i < nItems; i++)
+		if (listArray[i] == ch) {
 			index = i;
 			return true;
 			}
 	return false;
 }
 
+List::List(void) :
+	instanceData{new InstanceData{INITIAL_SIZE, 0}}
+{
+}
+
+List::~List(void)
+{
+	delete static_cast<InstanceData*>(instanceData);
+}
+
+void List::addFirst(char ch)
+{
+	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
+
+	pd->expandIfNeeded();
+	for (int i{pd->nItems}; i > 0; i--)
+		pd->listArray[i] = pd->listArray[i - 1];
+	pd->listArray[0] = ch;
+	pd->nItems++;
+}
+
 bool List::addBefore(char before, char ch)
 {
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
+	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
 	int				index;
 	
-	if (findIndex(before, index)) {
-		expandIfNeeded();
+	if (pd->findIndex(before, index)) {
+		pd->expandIfNeeded();
 		for (int i{pd->nItems - 1}; i >= index; i--)
 			pd->listArray[i + 1] = pd->listArray[i];
 		pd->listArray[index] = ch;
@@ -93,25 +93,26 @@ bool List::addBefore(char before, char ch)
 
 void List::addLast(char ch)
 {
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
+	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
 
-	expandIfNeeded();
+	pd->expandIfNeeded();
 	pd->listArray[pd->nItems++] = ch;
 }
 
 bool List::find(char ch) const
 {
-	int		index;
+	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
+	int				index;
 
-	return findIndex(ch, index);
+	return pd->findIndex(ch, index);
 }
 
 bool List::remove(char ch)
 {
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
+	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
 	int				index;
 
-	if (findIndex(ch, index)) {
+	if (pd->findIndex(ch, index)) {
 		for (int i = index; i < pd->nItems - 1; i++)
 			pd->listArray[i] = pd->listArray[i + 1];
 		pd->nItems--;
@@ -123,21 +124,21 @@ bool List::remove(char ch)
 
 void List::empty()
 {
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
+	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
 	
 	pd->nItems = 0;
 }
 
 int List::length(void) const
 {
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
+	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
 
 	return pd->nItems;
 }
 
 char& List::operator[](int index)
 {
-	PrivateData*	pd{static_cast<PrivateData*>(this->privateData)};
+	InstanceData*	pd{static_cast<InstanceData*>(this->instanceData)};
 
 	if (index < 0 || index >= pd->nItems)
 		throw "index out of bounds";
@@ -147,7 +148,7 @@ char& List::operator[](int index)
 
 ostream& operator<<(ostream& out, const List& list)
 {
-	PrivateData*	pd{static_cast<PrivateData*>(list.privateData)};
+	InstanceData*	pd{static_cast<InstanceData*>(list.instanceData)};
 	bool			first{true};
 
 	out << "List: (" << setw(2) << list.length() << " elements) [";
