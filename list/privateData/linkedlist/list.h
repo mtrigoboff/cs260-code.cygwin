@@ -24,5 +24,4 @@ private:
 	void* instanceData;
 };
 
-
 #endif
