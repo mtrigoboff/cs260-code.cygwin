@@ -47,7 +47,7 @@ bool Queue::isFull(void)
 
 ostream& operator<<(ostream& out, Queue& queue)
 {
-	out << '[';
+	out << "Queue& [";
 	if (queue.isEmpty())
 		out << "empty";
 	else
@@ -63,7 +63,7 @@ ostream& operator<<(ostream& out, Queue* queue)
 	bool	first{true};
 	char	ch;
 
-	out << '<';
+	out << "Queue* <";
 	while (iterator->getNext(ch))
 		out << (first ? first = false, "" : ", ") << ch;
 	if (first)
