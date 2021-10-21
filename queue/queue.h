@@ -35,7 +35,7 @@ public:
 
 	friend ostream& operator<<(ostream& out, Queue& queue);
 
-	Iterator *getIterator(void) { return new Iterator(*this); }
+	Iterator* getIterator(void) { return new Iterator(*this); }
 
 private:
 	int		size;
@@ -43,6 +43,6 @@ private:
 	int		last;
 };
 
-ostream& operator<<(ostream& out, Queue *queue);
+ostream& operator<<(ostream& out, Queue* queue);
 
 #endif
