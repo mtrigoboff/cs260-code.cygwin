@@ -18,8 +18,7 @@ public:
 	class Iterator
 	{
 	public:
-		bool hasNext(void);
-		char getNext(void);
+		bool getNext(char& ch);
 	
 	private:
 		Iterator(Stack& stack);

@@ -63,13 +63,14 @@ ostream& operator<<(ostream& out, Stack *stack)
 {
 	auto	iterator = stack->getIterator();
 	bool	first{true};
+	char	ch;
 
-	out << "Stack* [";
-	while (iterator->hasNext())
-		out << (first ? first = false, "" : ", ") << iterator->getNext();
+	out << "Stack* <";
+	while (iterator->getNext(ch))
+		out << (first ? first = false, "" : ", ") << ch;
 	if (first)
 		out << "empty";
-	out << ']' << endl;
+	out << '>' << endl;
 	delete iterator;
 	return out;
 }
@@ -80,12 +81,12 @@ Stack::Iterator::Iterator(Stack& stack) :
 {
 }
 
-bool Stack::Iterator::hasNext(void)
+bool Stack::Iterator::getNext(char& ch)
 {
-	return next < stack.size;
-}
-
-char Stack::Iterator::getNext(void)
-{
-	return stack.stackArray[next++];
+	if (next < stack.size) {
+		ch = stack.stackArray[next++];
+		return true;
+		}
+	else
+		return false;
 }
