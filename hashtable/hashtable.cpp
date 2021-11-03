@@ -9,18 +9,23 @@ using namespace std;
 static const int	TABLE_SIZE{7};
 
 HashTable::HashTable() :
-	table{new List[TABLE_SIZE]},
-	tableSize{TABLE_SIZE},
+	hashArray{new List[TABLE_SIZE]},
+	hashArraySize{TABLE_SIZE},
 	nPairs{0}
 {
 }
 
 HashTable::~HashTable()
 {
-	delete[] table; 
+	delete[] hashArray; 
 }
 
-void HashTable::insert(char* key, int value, int* prevValue)
+bool HashTable::get(const char* const key, int* valuePtr) const
+{
+	return find(key, valuePtr);
+}
+
+void HashTable::put(const char* const key, int value, int* prevValue)
 {
 	int*	valuePtr{getValuePtr(key)};
 
@@ -29,55 +34,32 @@ void HashTable::insert(char* key, int value, int* prevValue)
 	*valuePtr = value;
 }
 
-int& HashTable::operator[](char* key)
+bool HashTable::find(const char* const key, int* valuePtr) const
 {
-	return *getValuePtr(key);
-}
+	int		index{hashKey(key) % hashArraySize};
+	List&	slotList{hashArray[index]};
+	int*	listNodeValuePtr;
 
-int* HashTable::getValuePtr(char* key)
-{
-	int		index{hashIndex(key)};		// calculate index in the array
-	int		listPosn;
-	int*	valuePtr;
-
-	listPosn = table[index].find(key, &valuePtr);
-	if (listPosn == -1) {
-		valuePtr = table[index].add(key, NO_VALUE);
-		nPairs++;
+	if (slotList.find(key, &listNodeValuePtr)) {
+		if (valuePtr)
+			*valuePtr = *listNodeValuePtr;
+		return true;
 		}
-	return valuePtr;
+	else
+		return false;
 }
 
 bool HashTable::remove(char* key)
 {
-	int		index{hashIndex(key)};
-	List&	slotList{table[index]};
-	int*	value;
-	int		listPosn{slotList.find(key, &value)};
+	int		index{hashKey(key) % hashArraySize};
+	List&	slotList{hashArray[index]};
 
-	if (listPosn == -1) {
-		return false;
-		}
-	else {
-		slotList.remove(listPosn);
+	if (slotList.remove(key)) {
 		nPairs--;
 		return true;
 		}
-}
-
-bool HashTable::find(char* key, int* value) const
-{
-	int*	listNodeValuePtr;
-	int		findPosn;
-
-	//calculate the retrieval position (the index into the array)
-	int		index{hashIndex(key)};
-	List&	slotList{table[index]};
-
-	findPosn = slotList.find(key, &listNodeValuePtr);
-	if (value)
-		*value = *listNodeValuePtr;
-	return findPosn != -1;
+	else
+		return false;
 }
 
 int HashTable::getNPairs(void) const
@@ -85,17 +67,34 @@ int HashTable::getNPairs(void) const
 	return nPairs;
 }
 
+int& HashTable::operator[](char* key)
+{
+	return *getValuePtr(key);
+}
+
 ostream& operator<<(ostream& out, const HashTable& ht)
 {
 	out << "HashTable contents: " << ht.nPairs << " pairs" << endl;
 	out << "----------------------------------------------------------------------------" << endl;
-	for (int i = 0; i < ht.tableSize; i++)
-		out << setw(2) << i << ": " << ht.table[i] << endl;
+	for (int i = 0; i < ht.hashArraySize; i++)
+		out << setw(2) << i << ": " << ht.hashArray[i] << endl;
 	out << "----------------------------------------------------------------------------" << endl;
 	return out;
 }
 
-int HashTable::hashIndex(char* key) const
+int* HashTable::getValuePtr(const char* const key)
+{
+	int		index{hashKey(key) % hashArraySize};		// calculate index in the array
+	int*	valuePtr;
+
+	if (! hashArray[index].find(key, &valuePtr)) {
+		valuePtr = hashArray[index].add(key, NO_VALUE);
+		nPairs++;
+		}
+	return valuePtr;
+}
+
+int HashTable::hashKey(const char* const key)
 {
 	size_t	length{strlen(key)};
 	int		hashValue{0};
@@ -104,8 +103,7 @@ int HashTable::hashIndex(char* key) const
 	for(size_t i = 0; i < length; i++)
 		hashValue += key[i];
 
-	// Is it a good idea to do the % operation here?
-	return hashValue % tableSize;
+	return hashValue;
 }
 
 

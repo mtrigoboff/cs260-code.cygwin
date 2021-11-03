@@ -12,9 +12,10 @@ public:
 	HashTable();
 	~HashTable();
 
-	void insert(char* key, int value, int* prevValue = nullptr);
+	bool get(const char* const key, int* valuePtr) const;
+	void put(const char* const key, int value, int* prevValue = nullptr);
+	bool find(const char* const key, int* value = nullptr) const;
 	bool remove(char* key);
-	bool find(char* key, int* value = nullptr) const;
 	int getNPairs(void) const;
 
 	int& operator[](char* key);
@@ -22,12 +23,12 @@ public:
 	friend std::ostream& operator<<(std::ostream& out, const HashTable& ht);
 
 private:
-	List*	table;
-	int		tableSize;
-	int		nPairs;
+	int* getValuePtr(const char* const key);
+	static int hashKey(const char* const key);
 
-	int* getValuePtr(char* key);
-	int hashIndex(char* key) const;
+	List*	hashArray;
+	int		hashArraySize;
+	int		nPairs;
 };
 
 #endif

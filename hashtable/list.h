@@ -8,24 +8,25 @@ class List
 public:
 	List(void);
 	~List(void);
-	int* add(char* key, int value);
-	int find(char* key, int** value) const;
-	void remove(int index);
-	// void changeValue(int index, int newValue);
+	int* add(const char* const key, int value);
+	bool find(const char* const key, int** value = nullptr) const;
+	bool remove(const char* const key);
 	int	length(void) const;
 
 	friend std::ostream& operator<<(std::ostream& out, List& list);
 
 private:
-	class Node
+	struct Node
 	{
-	public:
-		Node(char *key, int value);
+		Node(const char* const key, int value);
 		~Node(void);
+
 		char	*key;
 		int		value;
 		Node	*next;
 	};
+
+	bool find(const char* const key, Node** nodePtr = nullptr, Node** prevNodePtr = nullptr) const;
 
 	Node*	first;
 	Node*	last;

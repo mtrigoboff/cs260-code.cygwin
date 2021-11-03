@@ -24,7 +24,7 @@ List::~List(void)
 		}
 }
 
-List::Node::Node(char* key, int value) :
+List::Node::Node(const char* const key, int value) :
 	key{new char[strlen(key) + 1]},
 	value{value},
 	next{nullptr}
@@ -37,7 +37,7 @@ List::Node::~Node(void)
 	delete[] key;
 }
 
-int* List::add(char* key, int value)
+int* List::add(const char* const key, int value)
 {
 	Node*	newNode{new Node(key, value)};
 
@@ -51,51 +51,56 @@ int* List::add(char* key, int value)
 	return &newNode->value;
 }
 
-int List::find(char* key, int** value) const
+// private overload
+bool List::find(const char* const key, Node** nodePtr, Node** prevNodePtr) const
 {
+	Node*	prev{nullptr};
 	Node*	node{first};
-	int		n{0};
 
 	while (node) {
 		if (! strcmp(node->key, key)) {
-			if (value)
-				*value = &node->value;
-			return n;
-			}
-		node = node->next;
-		n++;
-		}
-	return -1;
-}
-
-void List::remove(int index)
-{
-	Node*	node{first};
-	Node*	prev;
-	Node*	remNode;
-	int		i{0};
-
-	while (node) {
-		if (i == index) {
-			if (node == first) {
-				remNode = node;
-				first = remNode->next;
-				}
-			else {
-				remNode = node;
-				prev->next = node->next;
-				}
-			delete remNode;
-			lgth--;
-			return;
+			if (prevNodePtr)
+				*prevNodePtr = prev;
+			if (nodePtr)
+				*nodePtr = node;
+			return true;
 			}
 		prev = node;
 		node = node->next;
-		i++;
 		}
-	// Thanks to Fall 2016 student Hang Li for pointing out
-	// that the lgth-- statement needed to be where it now
-	// is instead of where this comment is.
+	return false;
+}
+
+// public overload
+bool List::find(const char* const key, int** valuePtr) const
+{
+	Node*	node;
+
+	if (find(key, &node)) {
+		if (valuePtr)
+			*valuePtr = &node->value;
+		return true;
+		}
+	else
+		return false;
+}
+
+bool List::remove(const char* const key)
+{
+	Node*	prev;
+	Node*	node;
+
+	if (find(key, &node, &prev)) {
+		if (node == first)
+			first = node->next;
+		else
+			prev->next = node->next;
+		delete node;
+		lgth--;
+		return true;
+		}
+	else
+		return false;
 }
 
 int List::length(void) const

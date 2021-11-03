@@ -23,30 +23,42 @@ int main(int argc, char** argv)
 	hashTable["Golf"] =		7;
 	cout << hashTable << endl;
 
-	// test right side use operator[]
+	// test right side use of operator[]
+	cout << "changing value for Bravo" << endl;
 	value = hashTable["Bravo"];
 	cout << "value for Bravo is: " << value << endl;
 	hashTable["Bravo"] =	22;
 	value = hashTable["Bravo"];
 	cout << "value for Bravo is: " << value << endl;
+
+	cout << endl << "getting value for nonexistent key" << endl;
 	value = hashTable["Zulu"];
 	cout << "value for Zulu is: " << value << endl << endl;
 	cout << hashTable << endl;
 
+	cout << "finding Charlie" << endl;
 	if (hashTable.find("Charlie"))
 		cout << "found Charlie" << endl;
 	if (hashTable.find("Charlie", &value))
 		cout << "found Charlie's value: " << value << endl;
 	cout << endl;
 
+	cout << "removing Charlie and Echo" << endl << endl;
 	hashTable.remove("Charlie");
 	hashTable.remove("Echo");
 	cout << hashTable << endl;
 
-	hashTable.insert("Delta", 44, &value);
+	cout << "changing Delta's value" << endl;
+	hashTable.put("Delta", 44, &value);
 	cout << "Delta previous value: " << value << endl;
-	hashTable.insert("Golf",  77, &value);
-	cout << "Golf  previous value: " << value << endl << endl;
+	hashTable.get("Delta", &value);
+	cout << "Delta current value: " << value << endl << endl;
+
+	cout << "changing Xray's value" << endl;
+	hashTable.put("Xray",  77, &value);
+	cout << "Xray  previous value: " << value << endl;
+	hashTable.get("Xray", &value);
+	cout << "Xray current value: " << value << endl << endl;
 	cout << hashTable << endl;
 
 	return 0;
