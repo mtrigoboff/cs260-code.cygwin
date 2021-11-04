@@ -1,7 +1,6 @@
 #include <cstring>
 #include <iostream>
 #include <iomanip>
-#include <fstream>
 #include "hashtable.h"
 
 using namespace std;
