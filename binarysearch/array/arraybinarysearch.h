@@ -4,7 +4,7 @@
 class ArrayBinarySearch
 {
 public:
-	static const int	MAX_SIZE{25};
+	static const int	MAX_SIZE{26};
 
 	ArrayBinarySearch(int itemArraySize);
 	~ArrayBinarySearch(void);

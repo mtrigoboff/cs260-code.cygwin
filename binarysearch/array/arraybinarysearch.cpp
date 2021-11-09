@@ -28,31 +28,6 @@ ArrayBinarySearch::~ArrayBinarySearch(void)
 	delete[] items;
 }
 
-void ArrayBinarySearch::print(char ch, int start, int half, int end)
-{
-	for (int i{0}; i < size; i++) {
-		cout << BOLD;
-		if (i == start)
-			if (i == half)
-				if (i == end)
-					cout << MAGENTA;
-				else
-					cout << YELLOW;
-			else
-				cout << GREEN;
-		else if (i == end)
-			cout << GREEN;
-		else if (i == half)
-			cout << RED;
-		else if (i > start && i < end)
-			cout << BLACK;
-		else
-			cout << RESET << BLACK;
-		cout << items[i] << " ";
-		}
-	cout << RESET << WHITE << endl;
-}
-
 bool ArrayBinarySearch::find_iterative(char ch)
 {
 	int		start{0};
@@ -100,4 +75,29 @@ bool ArrayBinarySearch::find_recursive(char ch, int start, int end)
 			return false;
 		else
 			return find_recursive(ch, half + 1, end);
+}
+
+void ArrayBinarySearch::print(char ch, int start, int half, int end)
+{
+	for (int i{0}; i < size; i++) {
+		cout << BOLD;
+		if (i == start)
+			if (i == half)
+				if (i == end)
+					cout << MAGENTA;
+				else
+					cout << YELLOW;
+			else
+				cout << GREEN;
+		else if (i == end)
+			cout << GREEN;
+		else if (i == half)
+			cout << RED;
+		else if (i > start && i < end)
+			cout << BLACK;
+		else
+			cout << RESET << BLACK;
+		cout << items[i] << " ";
+		}
+	cout << RESET << WHITE << endl;
 }
