@@ -99,11 +99,8 @@ static int partition(int theArray[], int first, int last)
 			swap(theArray[firstUnknown], theArray[lastS1]);
 			printRegions(theArray, first, last, firstUnknown, lastS1, firstUnknown, lastS1, -1);
 			}
-		else
+		else	// item from unknown belongs in S2, is already there
 			printRegions(theArray, first, last, -1, -1, firstUnknown, lastS1, firstUnknown);
-			
-
-		// else item from unknown belongs in S2, is already there
 	}
 
 	// place pivot in proper position and mark its location
