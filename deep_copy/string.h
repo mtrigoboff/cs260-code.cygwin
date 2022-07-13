@@ -7,7 +7,7 @@ public:
 	String(char* str = nullptr);	// default constructor if called with no args 
 	String(const String& src);		// copy constructor
 	~String(void);
-	String& operator=(String& src);
+	String& operator=(const String& src);
 
 private:
 	static int	nextID;

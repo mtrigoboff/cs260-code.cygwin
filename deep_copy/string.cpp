@@ -22,7 +22,7 @@ String::~String(void)					// destructor
 	delete[] str;
 }
 
-String& String::operator=(String& src)
+String& String::operator=(const String& src)
 {
 	copy(src, true);
 	return *this;
