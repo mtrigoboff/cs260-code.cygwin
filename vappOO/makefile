@@ -1,5 +1,5 @@
 # C++ compiler flags
-include ~michael.trigoboff/bin/makeflags_g++
+include ~/bin/makeflags_g++
 
 vapp:		car.o plane.o boat.o vehicle.o
 

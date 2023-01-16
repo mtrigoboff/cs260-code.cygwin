@@ -4,7 +4,7 @@
 D=
 
 # C++ compiler flags
-include ~michael.trigoboff/bin/makeflags_g++
+include ~/bin/makeflags_g++
 
 app:			someclass.o someclass.h
 				$(CC) $(CPPFLAGS) $(D) app.cpp someclass.o $(LDFLAGS) -o app
