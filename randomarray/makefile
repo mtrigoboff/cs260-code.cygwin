@@ -1,5 +1,5 @@
 # C++ compiler flags
-include ~michael.trigoboff/bin/makeflags_g++
+include ~/bin/makeflags_g++
 
 app:			randomarray.o
 

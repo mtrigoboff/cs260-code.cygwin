@@ -1,5 +1,5 @@
 # C compiler flags
-include ~michael.trigoboff/bin/makeflags_gcc
+include ~/bin/makeflags_gcc
 
 vapp:			vapp.o vehicles.o
 				$(CC) $(CFLAGS) $^ -o vapp -lm
