@@ -1,103 +1,103 @@
 let SessionLoad = 1
 if &cp | set nocp | endif
-map Oo :
-map Oj *
-map Om -
-map Ok +
-map Ol ,
-map OM 
-map Ow 7
-map Ox 8
-map Oy 9
-map Ot 4
-map Ou 5
-map Ov 6
-map Oq 1
-map Or 2
-map Os 3
-map Op 0
-map On .
-map [H 0
-map [F $
-map [1~ 0
-map [4~ $
-map [A k
-map [B j
-map [C l
-map [D h
-map [E i
-map OH 0
-map OF $
-map O2H 0
-map O2F $
-map O5H 0
-map O5F $
-map [2;2~ i
-map [3;2~ x
-map [2;5~ i
-map [3;5~ x
-map O2A ^B
-map O2B ^F
-map O2D b
-map O2C w
-map O5A ^B
-map O5B ^F
-map O5D b
-map O5C w
-map OE i
 map [3~ x
+map OE i
+map O5C w
+map O5D b
+map O5B ^F
+map O5A ^B
+map O2C w
+map O2D b
+map O2B ^F
+map O2A ^B
+map [3;5~ x
+map [2;5~ i
+map [3;2~ x
+map [2;2~ i
+map O5F $
+map O5H 0
+map O2F $
+map O2H 0
+map OF $
+map OH 0
+map [E i
+map [D h
+map [C l
+map [B j
+map [A k
+map [4~ $
+map [1~ 0
+map [F $
+map [H 0
+map On .
+map Op 0
+map Os 3
+map Or 2
+map Oq 1
+map Ov 6
+map Ou 5
+map Ot 4
+map Oy 9
+map Ox 8
+map Ow 7
+map OM 
+map Ol ,
+map Ok +
+map Om -
+map Oj *
+map Oo :
 let s:cpo_save=&cpo
 set cpo&vim
 vmap gx <Plug>NetrwBrowseXVis
 nmap gx <Plug>NetrwBrowseX
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
-map! Oo :
-map! Oj *
-map! Om -
-map! Ok +
-map! Ol ,
-map! OM 
-map! Ow 7
-map! Ox 8
-map! Oy 9
-map! Ot 4
-map! Ou 5
-map! Ov 6
-map! Oq 1
-map! Or 2
-map! Os 3
-map! Op 0
-map! On .
-map! [H <Home>
-map! [F <End>
-map! [1~ <Home>
-map! [4~ <End>
-map! [A <Up>
-map! [B <Down>
-map! [C <Right>
-map! [D <Left>
-map! [E <Insert>
-map! OH <Home>
-map! OF <End>
-map! O2H <Home>
-map! O2F <End>
-map! O5H <Home>
-map! O5F <End>
-map! [2;2~ <Insert>
-map! [3;2~ <Del>
-map! [2;5~ <Insert>
-map! [3;5~ <Del>
-map! O2A <PageUp>
-map! O2B <PageDown>
-map! O2C <S-Right>
-map! O2D <S-Left>
-map! O5A <PageUp>
-map! O5B <PageDown>
-map! O5C <S-Right>
-map! O5D <S-Left>
-map! OE <Insert>
 map! [3~ <Del>
+map! OE <Insert>
+map! O5D <S-Left>
+map! O5C <S-Right>
+map! O5B <PageDown>
+map! O5A <PageUp>
+map! O2D <S-Left>
+map! O2C <S-Right>
+map! O2B <PageDown>
+map! O2A <PageUp>
+map! [3;5~ <Del>
+map! [2;5~ <Insert>
+map! [3;2~ <Del>
+map! [2;2~ <Insert>
+map! O5F <End>
+map! O5H <Home>
+map! O2F <End>
+map! O2H <Home>
+map! OF <End>
+map! OH <Home>
+map! [E <Insert>
+map! [D <Left>
+map! [C <Right>
+map! [B <Down>
+map! [A <Up>
+map! [4~ <End>
+map! [1~ <Home>
+map! [F <End>
+map! [H <Home>
+map! On .
+map! Op 0
+map! Os 3
+map! Or 2
+map! Oq 1
+map! Ov 6
+map! Ou 5
+map! Ot 4
+map! Oy 9
+map! Ox 8
+map! Ow 7
+map! OM 
+map! Ol ,
+map! Ok +
+map! Om -
+map! Oj *
+map! Oo :
 let &cpo=s:cpo_save
 unlet s:cpo_save
 set autoindent
@@ -121,7 +121,7 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +7 app.cpp
+badd +6 app.cpp
 badd +1 factorial.cpp
 badd +11 factorial.h
 argglobal
@@ -141,11 +141,11 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 29 + 30) / 60)
-exe 'vert 1resize ' . ((&columns * 106 + 105) / 211)
-exe '2resize ' . ((&lines * 28 + 30) / 60)
-exe 'vert 2resize ' . ((&columns * 106 + 105) / 211)
-exe 'vert 3resize ' . ((&columns * 104 + 105) / 211)
+exe '1resize ' . ((&lines * 19 + 20) / 41)
+exe 'vert 1resize ' . ((&columns * 67 + 67) / 135)
+exe '2resize ' . ((&lines * 19 + 20) / 41)
+exe 'vert 2resize ' . ((&columns * 67 + 67) / 135)
+exe 'vert 3resize ' . ((&columns * 67 + 67) / 135)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -219,7 +219,8 @@ setlocal matchpairs=(:),{:},[:]
 setlocal nomodeline
 setlocal modifiable
 setlocal nrformats=octal,hex
-setlocal nonumber
+set number
+setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=ccomplete#Complete
 setlocal path=
@@ -265,7 +266,7 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 14) / 29)
+let s:l = 1 - ((0 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -346,7 +347,8 @@ setlocal matchpairs=(:),{:},[:]
 setlocal nomodeline
 setlocal modifiable
 setlocal nrformats=octal,hex
-setlocal nonumber
+set number
+setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=
 setlocal path=
@@ -392,7 +394,7 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 11 - ((5 * winheight(0) + 14) / 28)
+let s:l = 11 - ((3 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -473,7 +475,8 @@ setlocal matchpairs=(:),{:},[:]
 setlocal nomodeline
 setlocal modifiable
 setlocal nrformats=octal,hex
-setlocal nonumber
+set number
+setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=
 setlocal path=
@@ -519,18 +522,19 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 9 - ((8 * winheight(0) + 29) / 58)
+let s:l = 9 - ((5 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 9
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 29 + 30) / 60)
-exe 'vert 1resize ' . ((&columns * 106 + 105) / 211)
-exe '2resize ' . ((&lines * 28 + 30) / 60)
-exe 'vert 2resize ' . ((&columns * 106 + 105) / 211)
-exe 'vert 3resize ' . ((&columns * 104 + 105) / 211)
+3wincmd w
+exe '1resize ' . ((&lines * 19 + 20) / 41)
+exe 'vert 1resize ' . ((&columns * 67 + 67) / 135)
+exe '2resize ' . ((&lines * 19 + 20) / 41)
+exe 'vert 2resize ' . ((&columns * 67 + 67) / 135)
+exe 'vert 3resize ' . ((&columns * 67 + 67) / 135)
 tabnext 1
 if exists('s:wipebuf') && s:wipebuf != bufnr('%')
   silent exe 'bwipe ' . s:wipebuf
