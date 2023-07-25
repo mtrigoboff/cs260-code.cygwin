@@ -18,6 +18,9 @@
 # unignore text files
 !*.txt
 
+# ignore out.txt
+**/out.txt
+
 # unignore Markdown files
 !*.md
 
