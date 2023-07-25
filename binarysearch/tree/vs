@@ -1,122 +1,133 @@
 let SessionLoad = 1
 if &cp | set nocp | endif
-map Oo :
-map Oj *
-map Om -
-map Ok +
-map Ol ,
-map OM 
-map Ow 7
-map Ox 8
-map Oy 9
-map Ot 4
-map Ou 5
-map Ov 6
-map Oq 1
-map Or 2
-map Os 3
-map Op 0
-map On .
-map [H 0
-map [F $
-map [1~ 0
-map [4~ $
-map [A k
-map [B j
-map [C l
-map [D h
-map [E i
-map OH 0
-map OF $
-map O2H 0
-map O2F $
-map O5H 0
-map O5F $
-map [2;2~ i
-map [3;2~ x
-map [2;5~ i
-map [3;5~ x
-map O2A ^B
-map O2B ^F
-map O2D b
-map O2C w
-map O5A ^B
-map O5B ^F
-map O5D b
-map O5C w
-map OE i
 map [3~ x
+map OE i
+map O5C w
+map O5D b
+map O5B ^F
+map O5A ^B
+map O2C w
+map O2D b
+map O2B ^F
+map O2A ^B
+map [3;5~ x
+map [2;5~ i
+map [3;2~ x
+map [2;2~ i
+map O5F $
+map O5H 0
+map O2F $
+map O2H 0
+map OF $
+map OH 0
+map [E i
+map [D h
+map [C l
+map [B j
+map [A k
+map [4~ $
+map [1~ 0
+map [F $
+map [H 0
+map On .
+map Op 0
+map Os 3
+map Or 2
+map Oq 1
+map Ov 6
+map Ou 5
+map Ot 4
+map Oy 9
+map Ox 8
+map Ow 7
+map OM 
+map Ol ,
+map Ok +
+map Om -
+map Oj *
+map Oo :
 let s:cpo_save=&cpo
 set cpo&vim
 vmap gx <Plug>NetrwBrowseXVis
 nmap gx <Plug>NetrwBrowseX
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
-map! Oo :
-map! Oj *
-map! Om -
-map! Ok +
-map! Ol ,
-map! OM 
-map! Ow 7
-map! Ox 8
-map! Oy 9
-map! Ot 4
-map! Ou 5
-map! Ov 6
-map! Oq 1
-map! Or 2
-map! Os 3
-map! Op 0
-map! On .
-map! [H <Home>
-map! [F <End>
-map! [1~ <Home>
-map! [4~ <End>
-map! [A <Up>
-map! [B <Down>
-map! [C <Right>
-map! [D <Left>
-map! [E <Insert>
-map! OH <Home>
-map! OF <End>
-map! O2H <Home>
-map! O2F <End>
-map! O5H <Home>
-map! O5F <End>
-map! [2;2~ <Insert>
-map! [3;2~ <Del>
-map! [2;5~ <Insert>
-map! [3;5~ <Del>
-map! O2A <PageUp>
-map! O2B <PageDown>
-map! O2C <S-Right>
-map! O2D <S-Left>
-map! O5A <PageUp>
-map! O5B <PageDown>
-map! O5C <S-Right>
-map! O5D <S-Left>
-map! OE <Insert>
 map! [3~ <Del>
+map! OE <Insert>
+map! O5D <S-Left>
+map! O5C <S-Right>
+map! O5B <PageDown>
+map! O5A <PageUp>
+map! O2D <S-Left>
+map! O2C <S-Right>
+map! O2B <PageDown>
+map! O2A <PageUp>
+map! [3;5~ <Del>
+map! [2;5~ <Insert>
+map! [3;2~ <Del>
+map! [2;2~ <Insert>
+map! O5F <End>
+map! O5H <Home>
+map! O2F <End>
+map! O2H <Home>
+map! OF <End>
+map! OH <Home>
+map! [E <Insert>
+map! [D <Left>
+map! [C <Right>
+map! [B <Down>
+map! [A <Up>
+map! [4~ <End>
+map! [1~ <Home>
+map! [F <End>
+map! [H <Home>
+map! On .
+map! Op 0
+map! Os 3
+map! Or 2
+map! Oq 1
+map! Ov 6
+map! Ou 5
+map! Ot 4
+map! Oy 9
+map! Ox 8
+map! Ow 7
+map! OM 
+map! Ol ,
+map! Ok +
+map! Om -
+map! Oj *
+map! Oo :
 let &cpo=s:cpo_save
 unlet s:cpo_save
 set autoindent
 set background=dark
 set backspace=indent,eol,start
+set display=truncate
 set foldlevelstart=99
 set guicursor=n-v-c:block,o:hor50,i-ci:hor15,r-cr:hor30,sm:block,a:blinkon0
 set hlsearch
 set imsearch=0
+set incsearch
+set langnoremap
+set nolangremap
 set nomodeline
-set number
+set nrformats=bin,hex
 set ruler
+set scrolloff=5
 set shiftwidth=4
+set shortmess=filnxtToO
+set showcmd
 set showmatch
 set tabstop=4
+set ttimeout
+set ttimeoutlen=100
 set viminfo='20,\"50
-let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+set wildmenu
+let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
 silent only
+silent tabonly
 cd ~/cs260/code/binarysearch/tree
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
@@ -124,20 +135,18 @@ endif
 set shortmess=aoO
 badd +1 app.cpp
 badd +1 bst.cpp
-badd +7 bst.h
+badd +1 bst.h
 badd +1 preorder.txt
 badd +1 inorder.txt
 badd +1 postorder.txt
 argglobal
-silent! argdel *
+%argdel
 $argadd app.cpp
 set stal=2
+tabnew +setlocal\ bufhidden=wipe
+tabnew +setlocal\ bufhidden=wipe
+tabrewind
 edit app.cpp
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -166,6 +175,7 @@ setlocal cryptmethod=
 setlocal nocursorbind
 setlocal nocursorcolumn
 setlocal nocursorline
+setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
@@ -205,12 +215,14 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
+setlocal listchars=
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal nomodeline
 setlocal modifiable
 setlocal nrformats=octal,hex
+set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=
@@ -223,8 +235,11 @@ setlocal norelativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
+setlocal scrolloff=-1
 setlocal shiftwidth=4
 setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
 setlocal softtabstop=0
@@ -232,6 +247,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal swapfile
@@ -241,41 +257,53 @@ setlocal syntax=cpp
 endif
 setlocal tabstop=4
 setlocal tagcase=
+setlocal tagfunc=
 setlocal tags=
-setlocal terminalscroll=10000
-setlocal termkey=
-setlocal termsize=
 setlocal termwinkey=
 setlocal termwinscroll=10000
 setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
+setlocal thesaurusfunc=
 setlocal noundofile
 setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 29) / 58)
+let s:l = 1 - ((0 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
-exe s:l
+keepjumps exe s:l
 normal! zt
-1
+keepjumps 1
 normal! 0
-tabedit bst.h
+tabnext
+edit bst.h
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
 wincmd w
-set nosplitbelow
-set nosplitright
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
 wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
-exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 74 + 75) / 150)
+exe 'vert 2resize ' . ((&columns * 75 + 75) / 150)
 argglobal
+balt app.cpp
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -303,6 +331,7 @@ setlocal cryptmethod=
 setlocal nocursorbind
 setlocal nocursorcolumn
 setlocal nocursorline
+setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
@@ -342,12 +371,14 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
+setlocal listchars=
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal nomodeline
 setlocal modifiable
 setlocal nrformats=octal,hex
+set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=
@@ -360,8 +391,11 @@ setlocal norelativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
+setlocal scrolloff=-1
 setlocal shiftwidth=4
 setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
 setlocal softtabstop=0
@@ -369,6 +403,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal swapfile
@@ -378,17 +413,20 @@ setlocal syntax=cpp
 endif
 setlocal tabstop=4
 setlocal tagcase=
+setlocal tagfunc=
 setlocal tags=
-setlocal terminalscroll=10000
-setlocal termkey=
-setlocal termsize=
 setlocal termwinkey=
 setlocal termwinscroll=10000
 setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
+setlocal thesaurusfunc=
 setlocal noundofile
 setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
 set nowrap
@@ -396,15 +434,16 @@ setlocal nowrap
 setlocal wrapmargin=0
 8
 normal! zo
-let s:l = 1 - ((0 * winheight(0) + 28) / 57)
+let s:l = 1 - ((0 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
-exe s:l
+keepjumps exe s:l
 normal! zt
-1
+keepjumps 1
 normal! 0
 wincmd w
 argglobal
-if bufexists('bst.cpp') | buffer bst.cpp | else | edit bst.cpp | endif
+if bufexists("bst.cpp") | buffer bst.cpp | else | edit bst.cpp | endif
+balt bst.h
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -432,6 +471,7 @@ setlocal cryptmethod=
 setlocal nocursorbind
 setlocal nocursorcolumn
 setlocal nocursorline
+setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
@@ -471,12 +511,14 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
+setlocal listchars=
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal nomodeline
 setlocal modifiable
 setlocal nrformats=octal,hex
+set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=
@@ -489,8 +531,11 @@ setlocal norelativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
+setlocal scrolloff=-1
 setlocal shiftwidth=4
 setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
 setlocal softtabstop=0
@@ -498,6 +543,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal swapfile
@@ -507,32 +553,38 @@ setlocal syntax=cpp
 endif
 setlocal tabstop=4
 setlocal tagcase=
+setlocal tagfunc=
 setlocal tags=
-setlocal terminalscroll=10000
-setlocal termkey=
-setlocal termsize=
 setlocal termwinkey=
 setlocal termwinscroll=10000
 setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
+setlocal thesaurusfunc=
 setlocal noundofile
 setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 28) / 57)
+let s:l = 1 - ((0 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
-exe s:l
+keepjumps exe s:l
 normal! zt
-1
+keepjumps 1
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 105 + 105) / 211)
-exe 'vert 2resize ' . ((&columns * 105 + 105) / 211)
-tabedit preorder.txt
+exe 'vert 1resize ' . ((&columns * 74 + 75) / 150)
+exe 'vert 2resize ' . ((&columns * 75 + 75) / 150)
+tabnext
+edit preorder.txt
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
 split
@@ -541,14 +593,20 @@ split
 2wincmd k
 wincmd w
 wincmd w
-set nosplitbelow
-set nosplitright
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
 wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 18 + 30) / 60)
-exe '2resize ' . ((&lines * 20 + 30) / 60)
-exe '3resize ' . ((&lines * 17 + 30) / 60)
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe '1resize ' . ((&lines * 14 + 24) / 48)
+exe '2resize ' . ((&lines * 15 + 24) / 48)
+exe '3resize ' . ((&lines * 14 + 24) / 48)
 argglobal
+balt bst.h
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -576,6 +634,7 @@ setlocal cryptmethod=
 setlocal nocursorbind
 setlocal nocursorcolumn
 setlocal nocursorline
+setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
@@ -615,12 +674,14 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
+setlocal listchars=
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal nomodeline
 setlocal modifiable
 setlocal nrformats=octal,hex
+set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=
@@ -633,8 +694,11 @@ setlocal norelativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
+setlocal scrolloff=-1
 setlocal shiftwidth=4
 setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
 setlocal softtabstop=0
@@ -642,6 +706,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal swapfile
@@ -651,31 +716,35 @@ setlocal syntax=text
 endif
 setlocal tabstop=4
 setlocal tagcase=
+setlocal tagfunc=
 setlocal tags=
-setlocal terminalscroll=10000
-setlocal termkey=
-setlocal termsize=
 setlocal termwinkey=
 setlocal termwinscroll=10000
 setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
+setlocal thesaurusfunc=
 setlocal noundofile
 setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 9) / 18)
+let s:l = 1 - ((0 * winheight(0) + 7) / 14)
 if s:l < 1 | let s:l = 1 | endif
-exe s:l
+keepjumps exe s:l
 normal! zt
-1
+keepjumps 1
 normal! 0
 wincmd w
 argglobal
-if bufexists('inorder.txt') | buffer inorder.txt | else | edit inorder.txt | endif
+if bufexists("inorder.txt") | buffer inorder.txt | else | edit inorder.txt | endif
+balt preorder.txt
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -703,6 +772,7 @@ setlocal cryptmethod=
 setlocal nocursorbind
 setlocal nocursorcolumn
 setlocal nocursorline
+setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
@@ -742,12 +812,14 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
+setlocal listchars=
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal nomodeline
 setlocal modifiable
 setlocal nrformats=octal,hex
+set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=
@@ -760,8 +832,11 @@ setlocal norelativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
+setlocal scrolloff=-1
 setlocal shiftwidth=4
 setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
 setlocal softtabstop=0
@@ -769,6 +844,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal swapfile
@@ -778,31 +854,35 @@ setlocal syntax=text
 endif
 setlocal tabstop=4
 setlocal tagcase=
+setlocal tagfunc=
 setlocal tags=
-setlocal terminalscroll=10000
-setlocal termkey=
-setlocal termsize=
 setlocal termwinkey=
 setlocal termwinscroll=10000
 setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
+setlocal thesaurusfunc=
 setlocal noundofile
 setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 10) / 20)
+let s:l = 1 - ((0 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
-exe s:l
+keepjumps exe s:l
 normal! zt
-1
+keepjumps 1
 normal! 0
 wincmd w
 argglobal
-if bufexists('postorder.txt') | buffer postorder.txt | else | edit postorder.txt | endif
+if bufexists("postorder.txt") | buffer postorder.txt | else | edit postorder.txt | endif
+balt preorder.txt
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -830,6 +910,7 @@ setlocal cryptmethod=
 setlocal nocursorbind
 setlocal nocursorcolumn
 setlocal nocursorline
+setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
@@ -869,12 +950,14 @@ setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
 setlocal nolist
+setlocal listchars=
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal nomodeline
 setlocal modifiable
 setlocal nrformats=octal,hex
+set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=
@@ -887,8 +970,11 @@ setlocal norelativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
+setlocal scrolloff=-1
 setlocal shiftwidth=4
 setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
 setlocal softtabstop=0
@@ -896,6 +982,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
+setlocal spelloptions=
 setlocal statusline=
 setlocal suffixesadd=
 setlocal swapfile
@@ -905,45 +992,49 @@ setlocal syntax=text
 endif
 setlocal tabstop=4
 setlocal tagcase=
+setlocal tagfunc=
 setlocal tags=
-setlocal terminalscroll=10000
-setlocal termkey=
-setlocal termsize=
 setlocal termwinkey=
 setlocal termwinscroll=10000
 setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
+setlocal thesaurusfunc=
 setlocal noundofile
 setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 8) / 17)
+let s:l = 1 - ((0 * winheight(0) + 7) / 14)
 if s:l < 1 | let s:l = 1 | endif
-exe s:l
+keepjumps exe s:l
 normal! zt
-1
+keepjumps 1
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 18 + 30) / 60)
-exe '2resize ' . ((&lines * 20 + 30) / 60)
-exe '3resize ' . ((&lines * 17 + 30) / 60)
+exe '1resize ' . ((&lines * 14 + 24) / 48)
+exe '2resize ' . ((&lines * 15 + 24) / 48)
+exe '3resize ' . ((&lines * 14 + 24) / 48)
 tabnext 1
 set stal=1
-if exists('s:wipebuf') && s:wipebuf != bufnr('%')
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20 shortmess=filnxtToO
-set winminheight=1 winminwidth=1
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
-if file_readable(s:sx)
+if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
-let &so = s:so_save | let &siso = s:siso_save
+let &g:so = s:so_save | let &g:siso = s:siso_save
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
