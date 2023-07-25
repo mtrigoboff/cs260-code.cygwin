@@ -7,9 +7,10 @@ class Plane : public Vehicle
 {
 	private:
 		int		wingspan;
+		char*	company;
 		
 	public:
-		Plane(char *name, int nEngines, int wingspan);
+		Plane(char *name, int nEngines, int wingspan, char* cmpny);
 		~Plane(void);
 		void print(std::ostream& out);
 		void printSpeed(std::ostream& out);

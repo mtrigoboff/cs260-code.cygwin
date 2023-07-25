@@ -15,8 +15,8 @@ int main (void)
 	vehicles[1] = new Car("Chevy", 3000);
 	vehicles[2] = new Boat("Old Ironsides", Boat::BoatType::SAIL, 0, 100);
 	vehicles[3] = new Boat("Sea Horse", Boat::BoatType::POWER, 1, 24);
-	vehicles[4] = new Plane("Boeing", 4, 150);
-	vehicles[5] = new Plane("Cessna", 1, 45);
+	vehicles[4] = new Plane("B-52", 8, 150, "Boeing");
+	vehicles[5] = new Plane("B-2", 2, 45, "Northrop");
 
 	for (unsigned int i{0}; i < nVehicles; i++) {
 		vehicles[i]->print(cout);

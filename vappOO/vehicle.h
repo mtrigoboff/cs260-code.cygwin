@@ -6,10 +6,12 @@
 class Vehicle
 {
 	private:
-		char		name[20];
+		char			name[20];
 
 	protected:
-		int			nEngines;
+		static char*	speedHdr;
+
+		int				nEngines;
 
 		Vehicle(char* name, int nEngines);
 

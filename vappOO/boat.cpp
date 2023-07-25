@@ -28,10 +28,10 @@ void Boat::print(std::ostream& out)
 			typeName = "Power";
 			break;
 		}
-	out << typeName << endl;
+	out << "type:     " << typeName << endl;
 }
 
 void Boat::printSpeed(ostream& out)
 {
-	out << setprecision(3) << 1.34 * sqrt((float) length) << " knots" << endl;
+	out << speedHdr << setprecision(3) << 1.34 * sqrt((float) length) << " knots" << endl;
 }

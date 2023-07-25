@@ -4,6 +4,8 @@
 
 using namespace std;
 
+char*	Vehicle::speedHdr = "speed:    ";
+
 Vehicle::Vehicle(char* name, int nEngines) :
 	nEngines{nEngines}
 {
@@ -16,7 +18,6 @@ Vehicle::~Vehicle(void)
 
 void Vehicle::print(std::ostream& out)
 {
-	out << name << endl
-		<< nEngines << (nEngines > 1 ? " engines" : " engine")
-		<< endl;
+	out << "name:     " << name << endl
+		<< "#engines: " << nEngines << endl;
 }

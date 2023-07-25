@@ -15,10 +15,10 @@ Car::~Car(void)
 void Car::print(ostream& out)
 {
 	Vehicle::print(out);
-	out << weight << " lbs" << endl;
+	out << "weight:   " << weight << " lbs" << endl;
 }
 
 void Car::printSpeed(ostream& out)
 {
-	out << 200000 / weight << " mph" << endl;
+	out << speedHdr << 200000 / weight << " mph" << endl;
 }
