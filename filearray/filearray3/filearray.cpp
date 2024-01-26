@@ -111,7 +111,8 @@ streampos FileArray::fileSize(void)
 
 ostream& operator<<(ostream& out, FileArray& fa)
 {
-	streampos	size{fa.fileSize() / sizeof(char)};
+	streampos	size{fa.fileSize() /
+					 static_cast<streampos>(sizeof(char))};
 	bool		first{true};
 
 	out << "[";
