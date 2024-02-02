@@ -28,7 +28,7 @@ private:
 
 	std::streampos	fileSize(void);
 
-	char			ch;						// operator[] returns reference to here
+	char			ch;					// operator[] returns reference to here
 };
 
 #endif
