@@ -3,7 +3,7 @@
 
 #include <ostream>
 
-// Manages an array of ints. Does bounds checking on indexes.
+// Manages an array of chars. Does bounds checking on indexes.
 
 class Array
 {
