@@ -34,18 +34,20 @@ set ttimeout
 set ttimeoutlen=100
 set viminfo='20,\"50
 set wildmenu
+set winminheight=0
+set winminwidth=0
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/cs260/code/arrayclass
+cd /home/mtrig/cs260/code/arrayclass
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
 badd +1 app.cpp
 badd +1 array.cpp
-badd +11 array.h
+badd +1 array.h
 argglobal
 %argdel
 $argadd app.cpp
@@ -69,8 +71,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 75 + 75) / 150)
-exe 'vert 2resize ' . ((&columns * 74 + 75) / 150)
+exe 'vert 1resize ' . ((&columns * 119 + 118) / 237)
+exe 'vert 2resize ' . ((&columns * 117 + 118) / 237)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -200,7 +202,7 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 22) / 45)
+let s:l = 1 - ((0 * winheight(0) + 30) / 60)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -338,16 +340,15 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 22) / 45)
+let s:l = 1 - ((0 * winheight(0) + 30) / 60)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
 wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 75 + 75) / 150)
-exe 'vert 2resize ' . ((&columns * 74 + 75) / 150)
+exe 'vert 1resize ' . ((&columns * 119 + 118) / 237)
+exe 'vert 2resize ' . ((&columns * 117 + 118) / 237)
 tabnext
 edit array.h
 let s:save_splitbelow = &splitbelow
@@ -366,8 +367,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 74 + 75) / 150)
-exe 'vert 2resize ' . ((&columns * 75 + 75) / 150)
+exe 'vert 1resize ' . ((&columns * 117 + 118) / 237)
+exe 'vert 2resize ' . ((&columns * 119 + 118) / 237)
 argglobal
 balt app.cpp
 setlocal keymap=
@@ -498,7 +499,7 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 11 - ((8 * winheight(0) + 22) / 45)
+let s:l = 11 - ((10 * winheight(0) + 30) / 60)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -636,15 +637,15 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 22) / 45)
+let s:l = 1 - ((0 * winheight(0) + 30) / 60)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 74 + 75) / 150)
-exe 'vert 2resize ' . ((&columns * 75 + 75) / 150)
+exe 'vert 1resize ' . ((&columns * 117 + 118) / 237)
+exe 'vert 2resize ' . ((&columns * 119 + 118) / 237)
 tabnext 1
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
