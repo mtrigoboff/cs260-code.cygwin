@@ -12,7 +12,7 @@ public:
 	virtual ~ArrayList(void);
 	
 	int size(void) const;
-	bool add(const char& item);
+	void add(const char& item);
 	char& operator[] (const int index) const;
 
 	// to be used as a thrown exception
@@ -36,13 +36,13 @@ public:
 	class iterator
 	{
 	public:
-		iterator(char* ptr) : ptr{ptr}	 { }
-		iterator operator++()	 /* prefix */{ ptr++; return *this; }
-		iterator operator++(int) /* suffix */{ iterator it = *this; ptr++; return it; }
-		char& operator*()				 { return *ptr; }
-		char* operator->()				 { return ptr; }
-		bool operator==(const iterator& rhs) { return ptr == rhs.ptr; }
-		bool operator!=(const iterator& rhs) { return ptr != rhs.ptr; }
+		iterator(char* ptr) : ptr{ptr}	 		{ }
+		iterator operator++()	 /* prefix */	{ ptr++; return *this; }
+		iterator operator++(int) /* suffix */	{ iterator it = *this; ptr++; return it; }
+		char& operator*()					 	{ return *ptr; }
+		char* operator->()					 	{ return ptr; }
+		bool operator==(const iterator& rhs)	{ return ptr == rhs.ptr; }
+		bool operator!=(const iterator& rhs)	{ return ptr != rhs.ptr; }
 
 	private:
 		char	*ptr;
@@ -51,14 +51,13 @@ public:
 	// In the following two functions, it is not necessary to directly invoke
 	// the iterator constructor. The compiler is apparently smart enough to know
 	// that it needs to be done without specifying it explicitly.
-	iterator begin()	{ return iterator{&array[0]}; }
-	iterator end()		{ return iterator{&array[next]}; }
+	iterator begin()	{ return iterator{&ar[0]}; }
+	iterator end()		{ return iterator{&ar[next]}; }
 
 private:
-	char	*array;
-	int			capacity;
-	int			next;
-	int			growthFactor;
+	char	*ar;
+	int		capacity;
+	int		next;
 
 };
 

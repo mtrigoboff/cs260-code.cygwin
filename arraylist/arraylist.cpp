@@ -1,7 +1,7 @@
 #include "arraylist.h"
 
 ArrayList::ArrayList(const int capacity) :
-	array{new char[capacity]},
+	ar{new char[capacity]},
 	capacity{capacity},
 	next{0}
 {
@@ -9,7 +9,7 @@ ArrayList::ArrayList(const int capacity) :
 
 ArrayList::~ArrayList(void)
 {
-	delete[] array;
+	delete[] ar;
 }
 
 int ArrayList::size(void) const
@@ -17,19 +17,17 @@ int ArrayList::size(void) const
 	return next;
 }
 
-bool ArrayList::add(const char& item)
+void ArrayList::add(const char& item)
 {
 	if (next >= capacity)						// array full
 		throw ArrayListException("array full");
-	array[next++] = item;
-	return true;
+	ar[next++] = item;
 }
 
 char& ArrayList::operator[] (const int index) const
 {
-	if (index >= 0 && index < next) {			// index in range?
-		return array[index];					// return value
-		}
+	if (index >= 0 && index < next)				// index in range?
+		return ar[index];						// return value
 	else
 		throw ArrayListException("index [" + std::to_string(index) + "] out of bounds");
 }

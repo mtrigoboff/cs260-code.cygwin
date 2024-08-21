@@ -48,6 +48,13 @@ int main(int argc, char** argv)
 		cout << e << endl;
 		}
 
+	try {
+		cout << chArray[100];
+		}
+	catch (ArrayList::ArrayListException e) {
+		cout << e << endl;
+		}
+
 	cout << endl;
 	return 0;
 }
