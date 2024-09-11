@@ -4,10 +4,8 @@
 
 using namespace std;
 
-static const int	INITIAL_SIZE{4};
-
 List::List(void) :
-	listPriv{static_cast<void*>(new ListPriv())}
+	listPriv{new ListPriv()}
 {
 }
 
