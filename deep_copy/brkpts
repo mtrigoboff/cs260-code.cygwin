@@ -1,0 +1,28 @@
+break /home/inst/michael.trigoboff/cs260/code/deep_copy/app.cpp:10
+break /home/inst/michael.trigoboff/cs260/code/deep_copy/app.cpp:25
+break /home/inst/michael.trigoboff/cs260/code/deep_copy/string.cpp:12
+  commands
+  	print *this
+  end
+break /home/inst/michael.trigoboff/cs260/code/deep_copy/string.cpp:18
+  commands
+	print src
+  	print *this
+  end
+break /home/inst/michael.trigoboff/cs260/code/deep_copy/string.cpp:22
+  commands
+  	print *this
+  end
+break /home/inst/michael.trigoboff/cs260/code/deep_copy/string.cpp:28
+  commands
+	print src
+  	print *this
+  end
+break /home/inst/michael.trigoboff/cs260/code/deep_copy/string_shallow.cpp:12
+  commands
+  	print *this
+  end
+break /home/inst/michael.trigoboff/cs260/code/deep_copy/string_shallow.cpp:17
+  commands
+  	print *this
+  end
