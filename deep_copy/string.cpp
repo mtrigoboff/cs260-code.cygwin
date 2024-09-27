@@ -3,7 +3,7 @@
 
 int		String::nextID{1};
 
-String::String(char* str) :				// default constructor if called with no args
+String::String(const char* str) :		// default constructor if called with no args
 	str{str == nullptr ? nullptr : new char[strlen(str) + 1]},
 	id{nextID++}
 {
