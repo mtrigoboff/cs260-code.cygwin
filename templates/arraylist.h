@@ -59,8 +59,6 @@ private:
 	ITEM_TYPE	*array;
 	int			capacity;
 	int			next;
-	int			growthFactor;
-
 };
 
 #include "arraylist.cpp"
