@@ -14,7 +14,6 @@
 
 # unignore vim subwindow setup files
 !vs
-!vsb
 
 # unignore text files
 !*.txt

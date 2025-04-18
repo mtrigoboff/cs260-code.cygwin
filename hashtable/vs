@@ -29,15 +29,21 @@ set ttimeout
 set ttimeoutlen=100
 set viminfo='20,\"50
 set wildmenu
+set winminheight=0
+set winminwidth=0
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/cs260/code/hashtable
+cd ~/cs260-code.cygwin/hashtable
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
-set shortmess=aoO
+if &shortmess =~ 'A'
+  set shortmess=aoOA
+else
+  set shortmess=aoO
+endif
 badd +1 app.cpp
 badd +1 readme.txt
 badd +1 hashtable.cpp
@@ -69,8 +75,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 75 + 75) / 150)
-exe 'vert 2resize ' . ((&columns * 74 + 75) / 150)
+exe 'vert 1resize ' . ((&columns * 106 + 105) / 211)
+exe 'vert 2resize ' . ((&columns * 104 + 105) / 211)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -86,14 +92,15 @@ setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
 setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
 setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
 setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
 setlocal concealcursor=
 setlocal conceallevel=0
-setlocal completefunc=
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
@@ -109,6 +116,7 @@ setlocal noexpandtab
 if &filetype != 'cpp'
 setlocal filetype=cpp
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -122,8 +130,8 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=croql
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=croql
 setlocal formatprg=
 setlocal grepprg=
 setlocal iminsert=0
@@ -137,6 +145,7 @@ setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
+setlocal lispoptions=
 setlocal lispwords=
 setlocal nolist
 setlocal listchars=
@@ -146,6 +155,7 @@ setlocal matchpairs=(:),{:},[:]
 setlocal modeline
 setlocal modifiable
 setlocal nrformats=bin,octal,hex
+set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=ccomplete#Complete
@@ -165,6 +175,7 @@ setlocal showbreak=
 setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
+setlocal nosmoothscroll
 setlocal softtabstop=0
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
@@ -199,11 +210,11 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 3 - ((2 * winheight(0) + 22) / 45)
+let s:l = 4 - ((3 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 3
+keepjumps 4
 normal! 0
 wincmd w
 argglobal
@@ -223,14 +234,15 @@ setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
 setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
 setlocal comments=fb:-,fb:*
 setlocal commentstring=
 setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
 setlocal concealcursor=
 setlocal conceallevel=0
-setlocal completefunc=
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
@@ -246,6 +258,7 @@ setlocal noexpandtab
 if &filetype != 'text'
 setlocal filetype=text
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -259,8 +272,8 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=tcq
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=tcq
 setlocal formatprg=
 setlocal grepprg=
 setlocal iminsert=0
@@ -274,6 +287,7 @@ setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
+setlocal lispoptions=
 setlocal lispwords=
 setlocal nolist
 setlocal listchars=
@@ -283,6 +297,7 @@ setlocal matchpairs=(:),{:},[:]
 setlocal modeline
 setlocal modifiable
 setlocal nrformats=bin,octal,hex
+set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=
@@ -302,6 +317,7 @@ setlocal showbreak=
 setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
+setlocal nosmoothscroll
 setlocal softtabstop=0
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
@@ -336,15 +352,15 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 5 - ((4 * winheight(0) + 22) / 45)
+let s:l = 5 - ((4 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 5
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 75 + 75) / 150)
-exe 'vert 2resize ' . ((&columns * 74 + 75) / 150)
+exe 'vert 1resize ' . ((&columns * 106 + 105) / 211)
+exe 'vert 2resize ' . ((&columns * 104 + 105) / 211)
 tabnext
 edit hashtable.h
 let s:save_splitbelow = &splitbelow
@@ -363,11 +379,11 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 75 + 75) / 150)
-exe 'vert 2resize ' . ((&columns * 74 + 75) / 150)
+exe 'vert 1resize ' . ((&columns * 106 + 105) / 211)
+exe 'vert 2resize ' . ((&columns * 104 + 105) / 211)
 argglobal
 1argu
-if bufexists("hashtable.h") | buffer hashtable.h | else | edit hashtable.h | endif
+if bufexists(fnamemodify("hashtable.h", ":p")) | buffer hashtable.h | else | edit hashtable.h | endif
 balt app.cpp
 setlocal keymap=
 setlocal noarabic
@@ -383,14 +399,15 @@ setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
 setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
 setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
 setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
 setlocal concealcursor=
 setlocal conceallevel=0
-setlocal completefunc=
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
@@ -406,6 +423,7 @@ setlocal noexpandtab
 if &filetype != 'cpp'
 setlocal filetype=cpp
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -419,8 +437,8 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=croql
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=croql
 setlocal formatprg=
 setlocal grepprg=
 setlocal iminsert=0
@@ -434,6 +452,7 @@ setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
+setlocal lispoptions=
 setlocal lispwords=
 setlocal nolist
 setlocal listchars=
@@ -443,6 +462,7 @@ setlocal matchpairs=(:),{:},[:]
 setlocal modeline
 setlocal modifiable
 setlocal nrformats=bin,octal,hex
+set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=ccomplete#Complete
@@ -462,6 +482,7 @@ setlocal showbreak=
 setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
+setlocal nosmoothscroll
 setlocal softtabstop=0
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
@@ -496,7 +517,7 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 22) / 45)
+let s:l = 1 - ((0 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -505,7 +526,7 @@ normal! 0
 wincmd w
 argglobal
 1argu
-if bufexists("hashtable.cpp") | buffer hashtable.cpp | else | edit hashtable.cpp | endif
+if bufexists(fnamemodify("hashtable.cpp", ":p")) | buffer hashtable.cpp | else | edit hashtable.cpp | endif
 balt app.cpp
 setlocal keymap=
 setlocal noarabic
@@ -521,14 +542,15 @@ setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
 setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
 setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
 setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
 setlocal concealcursor=
 setlocal conceallevel=0
-setlocal completefunc=
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
@@ -544,6 +566,7 @@ setlocal noexpandtab
 if &filetype != 'cpp'
 setlocal filetype=cpp
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -557,8 +580,8 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=croql
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=croql
 setlocal formatprg=
 setlocal grepprg=
 setlocal iminsert=0
@@ -572,6 +595,7 @@ setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
+setlocal lispoptions=
 setlocal lispwords=
 setlocal nolist
 setlocal listchars=
@@ -581,6 +605,7 @@ setlocal matchpairs=(:),{:},[:]
 setlocal modeline
 setlocal modifiable
 setlocal nrformats=bin,octal,hex
+set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=ccomplete#Complete
@@ -600,6 +625,7 @@ setlocal showbreak=
 setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
+setlocal nosmoothscroll
 setlocal softtabstop=0
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
@@ -634,15 +660,15 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 22) / 45)
+let s:l = 1 - ((0 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 75 + 75) / 150)
-exe 'vert 2resize ' . ((&columns * 74 + 75) / 150)
+exe 'vert 1resize ' . ((&columns * 106 + 105) / 211)
+exe 'vert 2resize ' . ((&columns * 104 + 105) / 211)
 tabnext
 edit list.h
 let s:save_splitbelow = &splitbelow
@@ -661,10 +687,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 75 + 75) / 150)
-exe 'vert 2resize ' . ((&columns * 74 + 75) / 150)
+exe 'vert 1resize ' . ((&columns * 106 + 105) / 211)
+exe 'vert 2resize ' . ((&columns * 104 + 105) / 211)
 argglobal
-if bufexists("list.h") | buffer list.h | else | edit list.h | endif
+if bufexists(fnamemodify("list.h", ":p")) | buffer list.h | else | edit list.h | endif
 balt hashtable.h
 setlocal keymap=
 setlocal noarabic
@@ -680,14 +706,15 @@ setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
 setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
 setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
 setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
 setlocal concealcursor=
 setlocal conceallevel=0
-setlocal completefunc=
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
@@ -703,6 +730,7 @@ setlocal noexpandtab
 if &filetype != 'cpp'
 setlocal filetype=cpp
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -716,8 +744,8 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=croql
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=croql
 setlocal formatprg=
 setlocal grepprg=
 setlocal iminsert=0
@@ -731,6 +759,7 @@ setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
+setlocal lispoptions=
 setlocal lispwords=
 setlocal nolist
 setlocal listchars=
@@ -740,6 +769,7 @@ setlocal matchpairs=(:),{:},[:]
 setlocal modeline
 setlocal modifiable
 setlocal nrformats=bin,octal,hex
+set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=ccomplete#Complete
@@ -759,6 +789,7 @@ setlocal showbreak=
 setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
+setlocal nosmoothscroll
 setlocal softtabstop=0
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
@@ -793,7 +824,7 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 13 - ((12 * winheight(0) + 22) / 45)
+let s:l = 13 - ((12 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -801,7 +832,7 @@ keepjumps 13
 normal! 05|
 wincmd w
 argglobal
-if bufexists("list.cpp") | buffer list.cpp | else | edit list.cpp | endif
+if bufexists(fnamemodify("list.cpp", ":p")) | buffer list.cpp | else | edit list.cpp | endif
 balt list.h
 setlocal keymap=
 setlocal noarabic
@@ -817,14 +848,15 @@ setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
 setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
 setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
 setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
 setlocal concealcursor=
 setlocal conceallevel=0
-setlocal completefunc=
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
@@ -840,6 +872,7 @@ setlocal noexpandtab
 if &filetype != 'cpp'
 setlocal filetype=cpp
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -853,8 +886,8 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=croql
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=croql
 setlocal formatprg=
 setlocal grepprg=
 setlocal iminsert=0
@@ -868,6 +901,7 @@ setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
+setlocal lispoptions=
 setlocal lispwords=
 setlocal nolist
 setlocal listchars=
@@ -877,6 +911,7 @@ setlocal matchpairs=(:),{:},[:]
 setlocal modeline
 setlocal modifiable
 setlocal nrformats=bin,octal,hex
+set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=ccomplete#Complete
@@ -896,6 +931,7 @@ setlocal showbreak=
 setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
+setlocal nosmoothscroll
 setlocal softtabstop=0
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
@@ -930,22 +966,23 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 79 - ((23 * winheight(0) + 22) / 45)
+let s:l = 79 - ((29 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 79
 normal! 05|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 75 + 75) / 150)
-exe 'vert 2resize ' . ((&columns * 74 + 75) / 150)
+exe 'vert 1resize ' . ((&columns * 106 + 105) / 211)
+exe 'vert 2resize ' . ((&columns * 104 + 105) / 211)
 tabnext 1
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
-set winheight=1 winwidth=20 shortmess=filnxtToO
+set winheight=1 winwidth=20
+set shortmess=filnxtToO
 let &winminheight = s:save_winminheight
 let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
