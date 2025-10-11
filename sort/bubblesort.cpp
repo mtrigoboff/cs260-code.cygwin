@@ -13,7 +13,7 @@ void printNoSwap(int theArray[], int itemIndex, int endIndex)
 {
 	for (int i{0}; i < arraySize; i++) {
 		if (i == itemIndex || i == itemIndex + 1)
-			cout << BOLD << MAGENTA;
+			cout << BOLD << YELLOW;
 		else if (i <= endIndex)
 			cout << RESET << GREEN;
 		else
@@ -27,7 +27,7 @@ void printSwap(int theArray[], int index1, int index2, int endIndex)
 {
 	for (int i{0}; i < arraySize; i++) {
 		if (i == index1 || i == index2)
-			cout << BOLD << YELLOW;
+			cout << BOLD << RED;
 		else if (i <= endIndex)
 			cout << RESET << GREEN;
 		else

@@ -25,13 +25,13 @@ static void printRegions(int theArray[],
 
 		// color
 		if (i == index1 || i == index2)					// being swapped
-			cout << BOLD << YELLOW;
-		else if (i == first)							// pivot
 			cout << RED;
+		else if (i == first)							// pivot
+			cout << WHITE;
 		else if (i > first && i <= lastS1)				// < pivot
 			cout << GREEN;
 		else if (i > lastS1 && i <= firstUnknown)		// > pivot
-			cout << MAGENTA;
+			cout << YELLOW;
 		else if (i > firstUnknown && i <= last)			// not yet sorted
 			cout << BOLD << BLACK;
 		else											// not yet partitioned
@@ -48,7 +48,7 @@ static void printPivotSwap(int theArray[], int first, int last, int pivot)
 
 		// color
 		if (i == first || i == pivot)		// being swapped
-			cout << BOLD << YELLOW;
+			cout << BOLD << RED;
 		else if (i < first || i > last)		// outside of array segment
 			cout << BLACK;
 		else								// rest of array segment
