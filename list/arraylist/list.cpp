@@ -19,17 +19,17 @@ List::~List(void)
 
 void List::expandIfNeeded(void)
 {
-	int		newArraySize;
-	char*	newArray;
+	int		newArraySize;		// size of new, larger array
+	char*	newArray; ;			// pointer to new array memory
 
 	if (nItems >= arraySize) {
-		newArraySize = arraySize + INITIAL_SIZE;
-		newArray = new char[newArraySize];
-		for (int i = 0; i < arraySize; i++)
-			newArray[i] = listArray[i];
-		delete[] listArray;
-		listArray = newArray;
-		arraySize = newArraySize;
+		newArraySize = arraySize + INITIAL_SIZE;	// compute new array size
+		newArray = new char[newArraySize];			// get new array memory
+		for (int i = 0; i < arraySize; i++)			// copy data from ...
+			newArray[i] = listArray[i];				// ... old array to new array
+		delete[] listArray;							// delete old array memory
+		listArray = newArray;						// use new array memory
+		arraySize = newArraySize;					// record new array size
 		}
 }
 
